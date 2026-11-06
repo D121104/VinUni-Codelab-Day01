@@ -25,7 +25,7 @@ PRICING_1M_TOKENS = {
     "gpt-4o": {"input": 5.00, "output": 20.00},
     "gpt-4o-mini": {"input": 0.150, "output": 0.600},
     "gemini-2.5-flash": {"input": 0.075, "output": 0.300},
-    "gemini-2.5-pro": {"input": 1.25, "output": 5.00},
+    "gemini-3.5-flash-lite": {"input": 1.25, "output": 5.00},
     "claude-3-5-sonnet": {"input": 3.00, "output": 15.00},
     "claude-3-5-haiku": {"input": 0.80, "output": 4.00},
 }
@@ -289,7 +289,7 @@ def compare_models(prompt: str) -> dict:
     for name, call, model in (
         ("gpt4o", call_openai, OPENAI_MODEL),
         ("gpt4o_mini", call_openai, OPENAI_MINI_MODEL),
-        ("gemini_flash", call_gemini, GEMINI_MODEL),
+        ("gemini_flash", call_gemini, "gemini-2.5-flash"),
     ):
         rates = PRICING_1M_TOKENS[model]
         response, latency, usage = call(prompt, model=model)
